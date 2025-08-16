@@ -27,6 +27,7 @@ jobs:
       - run: |
           rm -rf ../docs
           mv dist ../docs
+          touch ../docs/.nojekyll
 
       # Commit & push docs folder to main
       - name: Push to main/docs
