@@ -1,11 +1,37 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Header from './components/Header.vue';
+import { RouterView } from 'vue-router';
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class="app-wrapper">
+    <div class="header-wrapper">
+      <Header />
+    </div>
+    <div class="router-view-wrapper">
+      <RouterView />
+    </div>
+  </div>
 </template>
 
-<style scoped></style>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+.app-wrapper {
+  display: grid;
+  grid-template-rows: 100px auto;
+  height: 100dvh;
+  font-family: 'Comic Sans MS';
+}
+
+.header-wrapper {
+  grid-row: 1 / 2;
+}
+
+.router-view-wrapper {
+  grid-row: 2 / 3;
+  background-color: grey;
+}
+</style>
