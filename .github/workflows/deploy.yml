@@ -11,26 +11,28 @@ jobs:
 
     defaults:
       run:
-        working-directory: vicky-ui  # <-- set working dir to ui folder
+        working-directory: vicky-ui  # ui folder only
 
     steps:
-      # Checkout repo
       - uses: actions/checkout@v3
 
-      # Setup Node
       - uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      # Install dependencies (in ui folder)
       - run: npm ci
-
-      # Build the UI app
       - run: npm run build-only
 
-      # Deploy the dist folder to gh-pages
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # relative to ui folder because working-directory is set
+      # Copy dist to docs folder in the repo
+      - run: |
+          rm -rf ../docs
+          mv dist ../docs
+
+      # Commit & push docs folder to main
+      - name: Push to main/docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add ../docs
+          git commit -m "Update docs [skip ci]" || echo "No changes to commit"
+          git push origin main
