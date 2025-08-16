@@ -49,7 +49,7 @@ function moveLeft() {
 <template>
   <div class="header">
     <div v-if="headerStore.headerTextVisibility" class="header-text" ref="headerTextElement">
-      HAPPY BIRTHDAY VICTORIA
+     🎈🎈🎈HAPPY BIRTHDAY VICTORIA🎈🎈🎈
     </div>
   </div>
 </template>
