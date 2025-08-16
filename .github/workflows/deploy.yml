@@ -1,0 +1,36 @@
+name: Deploy UI to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: vicky-ui  # <-- set working dir to ui folder
+
+    steps:
+      # Checkout repo
+      - uses: actions/checkout@v3
+
+      # Setup Node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Install dependencies (in ui folder)
+      - run: npm ci
+
+      # Build the UI app
+      - run: npm run build-only
+
+      # Deploy the dist folder to gh-pages
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist  # relative to ui folder because working-directory is set
