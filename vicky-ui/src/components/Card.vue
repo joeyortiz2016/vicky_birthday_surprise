@@ -88,10 +88,9 @@ function initLetter() {
   letter.value.push(`Wow. You truly are Victoria Naranjo! Congratulations!`)
   // Second page.
   letter.value.push(`Hey Vicky! Hope you're having fun at this party right now and not wanting to die. Just wanted to say you're an amazing friend
-  and am glad to have known you all these years. I will forever appreciate you putting me on Succession, and always calling me out on my bullshit when needed.
-  But also fuck you.`)
+  and am glad to have known you all these years. I will forever appreciate you putting me on Succession, and always calling me out on my bullshit when needed. ❤️❤️❤️❤️`)
   // Third Page.
-  letter.value.push(`But also fuck you hahaha.`)
+  letter.value.push(`But also go fuck yourself.`)
   // Fourth Page
   letter.value.push(`ANYWAYS...`)
   // Fifth Page
